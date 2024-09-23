@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
+import grid from "./grid.svg";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -14,10 +15,63 @@ const geistMono = localFont({
   weight: "100 900",
 });
 
+const SITE_URL = "https://mba.tinhcorner.com";
+
+const SITE_DESCRIPTION =
+  "This website serves as my digital notebook for documenting my MBA journey!";
+const SITE_TITLE = "Thinh's MBA Note";
+
 export const metadata: Metadata = {
-  title: "Thinh's MBA Note",
-  description:
-    "This website serves as my digital notebook for documenting my MBA journey.",
+  metadataBase: new URL(SITE_URL),
+  title: SITE_TITLE,
+  description: SITE_DESCRIPTION,
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  twitter: {
+    title: "Thinh's MBA Note",
+    card: "summary_large_image",
+    site: "@Thinhngo89",
+    creator: "@Thinhngo89",
+    images: [
+      {
+        url: "https://mba.thinhcorner.com/opengraph-image.png",
+        width: 1280,
+        height: 640,
+        alt: SITE_DESCRIPTION,
+      },
+    ],
+  },
+  alternates: {
+    canonical: SITE_URL,
+  },
+  keywords: ["MBA", "ThinhCorner MBA", "Thinh's MBA Note", "Thinh Ngo"],
+  creator: "th1nhng0",
+  openGraph: {
+    url: SITE_URL,
+    type: "website",
+    title: SITE_TITLE,
+    siteName: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+    locale: "en-US",
+    images: [
+      {
+        url: "https://mba.thinhcorner.com/opengraph-image.png",
+        width: 1280,
+        height: 640,
+        alt: SITE_DESCRIPTION,
+        type: "image/png",
+      },
+    ],
+  },
 };
 
 export default function RootLayout({
@@ -28,8 +82,15 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} relative antialiased`}
       >
+        <div
+          className="absolute inset-0 -z-20 size-full max-h-svh"
+          style={{
+            backgroundImage: `url(${grid.src})`,
+          }}
+        />
+        <div className="absolute inset-0 -z-10 max-h-svh size-full bg-gradient-to-b from-transparent  to-background" />
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
