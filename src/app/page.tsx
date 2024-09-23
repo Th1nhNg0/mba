@@ -10,7 +10,7 @@ export default async function Home() {
       <p className="text-sm text-muted-foreground">
         Last updated:{" "}
         <time dateTime={lastUpdated.toISOString()}>
-          {lastUpdated.toLocaleString()}
+          {lastUpdated.toLocaleDateString()}
         </time>
       </p>
       <div className="prose dark:prose-invert max-w-none">
