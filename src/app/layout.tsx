@@ -1,7 +1,8 @@
+import { ThemeProvider } from "@/components/theme-provider";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import { ThemeProvider } from "@/components/theme-provider";
 import grid from "./grid.svg";
 
 const geistSans = localFont({
@@ -83,6 +84,9 @@ export default function RootLayout({
           <main className="py-10 max-w-3xl mx-auto ">{children}</main>
         </ThemeProvider>
       </body>
+      {process.env.GOOGLE_ANALYTICS_ID && (
+        <GoogleAnalytics gaId={process.env.GOOGLE_ANALYTICS_ID} />
+      )}
     </html>
   );
 }
