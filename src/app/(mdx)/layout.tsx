@@ -5,10 +5,10 @@ import Link from "next/link";
 export default function MdxLayout({ children }: { children: React.ReactNode }) {
   // Create any shared layout or styles here
   return (
-    <div>
-      <Button variant="link" asChild className="px-0">
+    <div className="px-5">
+      <Button variant="link" asChild className="px-0 text-muted-foreground">
         <Link href="/">
-          <ChevronLeft className="w-6 h-6 mr-2" />
+          <ChevronLeft className="w-4 h-4 mr-2" />
           Back to home
         </Link>
       </Button>
