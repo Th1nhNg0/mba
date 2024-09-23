@@ -265,7 +265,7 @@ export default function Calendar({ events }: ComponentProps) {
                                   backgroundColor: `${event.color}90`,
                                 }}
                               >
-                                <p className="whitespace-nowrap truncate">
+                                <p className="whitespace-nowrap text-white truncate">
                                   {event.title}
                                 </p>
                               </div>
@@ -322,7 +322,7 @@ export default function Calendar({ events }: ComponentProps) {
                                 style={{ backgroundColor: event.color }}
                               />
                               <div className="flex-1 space-y-1">
-                                <p className="text-sm font-medium">
+                                <p className="text-sm  font-medium">
                                   {event.title}
                                 </p>
                                 {event.data && (

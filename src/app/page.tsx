@@ -1,11 +1,10 @@
-import data from "@/data/semester-1.json";
-import { convertSemesterDataToEventsFormat } from "@/lib/utils";
 import Link from "next/link";
 import Calendar from "../components/calendar";
+import { getEvents } from "@/lib/utils";
 
 export default async function Home() {
   const lastUpdated = new Date();
-
+  const events = getEvents();
   return (
     <div className="px-5">
       <p className="text-sm text-muted-foreground">
@@ -43,7 +42,7 @@ export default async function Home() {
         </p>
       </div>
       <div className="my-5">
-        <Calendar events={convertSemesterDataToEventsFormat(data)} />
+        <Calendar events={events} />
       </div>
       <div className="prose dark:prose-invert max-w-none">
         <p>

@@ -1,5 +1,7 @@
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
+import customEvents from "@/data/custom-event.json";
+import semester from "@/data/semester-1.json";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -15,11 +17,26 @@ interface Events {
   [date: string]: Event[];
 }
 
-export function convertSemesterDataToEventsFormat(jsonData: any): Events {
+function getCustomEvent() {
+  const events: Events = {};
+  for (const event of customEvents) {
+    if (!events[event.date]) {
+      events[event.date] = [];
+    }
+    events[event.date].push({
+      title: event.title,
+      color: event.color,
+      data: event.data,
+    });
+  }
+  return events;
+}
+
+function getSemesterEvent(): Events {
   const events: Events = {};
 
   // Loop through each course in jsonData
-  for (const course of jsonData) {
+  for (const course of semester) {
     const courseName = course.name;
     const dates = course.dates;
 
@@ -45,4 +62,24 @@ export function convertSemesterDataToEventsFormat(jsonData: any): Events {
   }
 
   return events;
+}
+
+export function getEvents() {
+  const customEvents = getCustomEvent();
+  const semesterEvents = getSemesterEvent();
+  // join the two objects with array values
+  const result: Events = {};
+  for (const date in customEvents) {
+    if (!result[date]) {
+      result[date] = [];
+    }
+    result[date].push(...customEvents[date]);
+  }
+  for (const date in semesterEvents) {
+    if (!result[date]) {
+      result[date] = [];
+    }
+    result[date].push(...semesterEvents[date]);
+  }
+  return result;
 }
