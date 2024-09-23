@@ -41,14 +41,6 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     site: "@Thinhngo89",
     creator: "@Thinhngo89",
-    images: [
-      {
-        url: "https://mba.thinhcorner.com/opengraph-image.png",
-        width: 1280,
-        height: 640,
-        alt: SITE_DESCRIPTION,
-      },
-    ],
   },
   alternates: {
     canonical: SITE_URL,
@@ -62,15 +54,6 @@ export const metadata: Metadata = {
     siteName: SITE_TITLE,
     description: SITE_DESCRIPTION,
     locale: "en-US",
-    images: [
-      {
-        url: "https://mba.thinhcorner.com/opengraph-image.png",
-        width: 1280,
-        height: 640,
-        alt: SITE_DESCRIPTION,
-        type: "image/png",
-      },
-    ],
   },
 };
 
