@@ -3,7 +3,7 @@
     "name": "Advanced Strategic Management",
     "address": "59C Nguyễn Đình Chiểu, Võ Thị Sáu Ward, District 3, Ho Chi Minh City",
     "room": "A302",
-    "color": "#EFC3F5",
+    "color": "#3D2EE4",
     "dates": [
       {
         "date": "06/10/2024",
@@ -67,7 +67,7 @@
     "name": "Advanced Operations Management",
     "address": "59C Nguyễn Đình Chiểu, Võ Thị Sáu Ward, District 3, Ho Chi Minh City",
     "room": "A302",
-    "color": "#DCCCA3",
+    "color": "#143642",
     "dates": [
       {
         "date": "08/02/2025",
@@ -124,7 +124,7 @@
     "name": "Advanced Quality Management",
     "address": "59C Nguyễn Đình Chiểu, Võ Thị Sáu Ward, District 3, Ho Chi Minh City",
     "room": "A302",
-    "color": "#F18F01",
+    "color": "#A8201A",
     "dates": [
       {
         "date": "19/01/2025",
@@ -188,7 +188,7 @@
     "name": "Philosophy",
     "address": "59C Nguyễn Đình Chiểu, Võ Thị Sáu Ward, District 3, Ho Chi Minh City",
     "room": "A302",
-    "color": "#048BA8",
+    "color": "#1F363D",
     "dates": [
       {
         "date": "05/10/2024",
@@ -265,7 +265,7 @@
     "name": "Scientific Research Methodology",
     "address": "59C Nguyễn Đình Chiểu, Võ Thị Sáu Ward, District 3, Ho Chi Minh City",
     "room": "A302",
-    "color": "#5448C8",
+    "color": "#230C33",
     "dates": [
       {
         "date": "06/10/2024",
