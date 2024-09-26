@@ -18,7 +18,7 @@ import {
   MapPin,
   RotateCcw,
 } from "lucide-react";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ScrollArea } from "./ui/scroll-area";
 
 const days = ["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"];
@@ -140,6 +140,10 @@ export default function Calendar({ events }: ComponentProps) {
       isCurrentMonth: false,
     })),
   ];
+
+  useEffect(() => {
+    setCurrentDate(new Date(Date.now()));
+  }, []);
 
   return (
     <div className="max-w-full sm:max-w-3xl mx-auto px-4 sm:px-0">
