@@ -61,7 +61,9 @@ interface ComponentProps {
 }
 
 export default function Calendar({ events }: ComponentProps) {
-  const [currentDate, setCurrentDate] = useState<Date>(new Date());
+  const [currentDate, setCurrentDate] = useState<Date>(
+    new Date(Date.UTC(new Date().getUTCFullYear(), new Date().getUTCMonth(), 1))
+  );
   const [direction, setDirection] = useState<number>(0);
 
   const isToday = (date: Date): boolean => {
@@ -140,10 +142,6 @@ export default function Calendar({ events }: ComponentProps) {
       isCurrentMonth: false,
     })),
   ];
-
-  useEffect(() => {
-    setCurrentDate(new Date(Date.now()));
-  }, []);
 
   return (
     <div>
