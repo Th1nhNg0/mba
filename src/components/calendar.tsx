@@ -18,8 +18,10 @@ import {
   MapPin,
   RotateCcw,
 } from "lucide-react";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { ScrollArea } from "./ui/scroll-area";
+
+export const revalidate = 30;
 
 const days = ["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"];
 
