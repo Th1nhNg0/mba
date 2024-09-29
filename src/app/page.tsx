@@ -1,23 +1,27 @@
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { getNotes } from "@/lib/notes";
+import { format, formatDistanceToNow } from "date-fns";
 import Link from "next/link";
-import Calendar from "../components/calendar";
-import { getEvents } from "@/lib/utils";
+import BentoGrid from "./bento-grid";
 
 export default async function Home() {
   const lastUpdated = new Date();
-  const events = getEvents();
+  const notes = await getNotes();
+
   return (
     <div className="px-5">
       <p className="text-sm text-muted-foreground">
         Last updated:{" "}
         <time dateTime={lastUpdated.toISOString()}>
-          {lastUpdated.toLocaleDateString()}
+          {format(lastUpdated, "MMMM dd, yyyy h:mm a")}
         </time>
       </p>
       <div className="prose dark:prose-invert max-w-none">
         <h1>Welcome! I'm Thinh 👋</h1>
         <p>
-          This website serves as my digital notebook for documenting my Master
-          of Business Administration journey.
+          This website serves as my digital notebook for documenting my{" "}
+          <b className="text-blue-500">Master of Business Administration</b>{" "}
+          journey.
         </p>
         <p>
           I'm currently pursuing a master's degree at the{" "}
@@ -25,30 +29,60 @@ export default async function Home() {
             href="https://ueh.edu.vn"
             target="_blank"
             rel="noopener noreferrer"
+            className="text-teal-500"
           >
             University of Economics Ho Chi Minh City
           </a>
           . Throughout this experience, I'm gaining valuable insights into
           business, leadership, and personal growth. My goal is to share these
           learnings with you, inviting you to join me on this educational
-          adventure. If you interested in what I'm learning, check out the{" "}
-          <Link href="/program">program</Link> page.
+          adventure.
         </p>
-
-        <p>
-          Below is the calendar of my first semester. I'll be updating it
-          regularly with new events, assignments, and other important dates.
-          Feel free to check it out and follow along with my journey!
-        </p>
-      </div>
-      <div className="my-5">
-        <Calendar events={events} />
-      </div>
-      <div className="prose dark:prose-invert max-w-none">
+        <BentoGrid />
         <p>
           If you want to know more about me, visit my main website at{" "}
-          <Link href="https://thinhcorner.com">thinhcorner.com</Link>.
+          <Link className="text-yellow-500" href="https://thinhcorner.com">
+            thinhcorner.com
+          </Link>
+          .
         </p>
+
+        <h2 className="mt-0">
+          Below are the notes that I have taken on my journey:
+        </h2>
+      </div>
+
+      <div className="mt-6 space-y-4">
+        {notes.map((note, id) => (
+          <Card key={id} id={`note-${notes.length - id}`}>
+            <CardHeader className="flex flex-row pb-4 items-center justify-between gap-5">
+              <Link
+                href={`#note-${notes.length - id}`}
+                className="text-xl  font-semibold text-muted-foreground"
+              >
+                #{notes.length - id}
+              </Link>
+              <time
+                className="text-sm text-muted-foreground"
+                dateTime={new Date(note.frontmatter.created_at).toISOString()}
+              >
+                {format(
+                  new Date(note.frontmatter.created_at),
+                  "MMMM dd, yyyy h:mm a"
+                )}
+                -{" "}
+                {formatDistanceToNow(new Date(note.frontmatter.created_at), {
+                  addSuffix: true,
+                })}
+              </time>
+            </CardHeader>
+            <CardContent>
+              <div className="prose dark:prose-invert max-w-none">
+                {note.content}
+              </div>
+            </CardContent>
+          </Card>
+        ))}
       </div>
     </div>
   );
